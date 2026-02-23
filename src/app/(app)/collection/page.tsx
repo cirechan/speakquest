@@ -154,25 +154,27 @@ export default function CollectionPage() {
           })}
         </div>
       ) : (
-        <Card padding="lg" className="text-center">
-          <span className="text-5xl block mb-3">📦</span>
-          <p className="font-bold text-[var(--color-text)] mb-2">
-            {cards.length === 0 ? "Aun no tienes cartas" : "No hay cartas con ese filtro"}
-          </p>
-          <p className="text-sm text-[var(--color-text-secondary)] mb-4">
+        <div className="text-center py-10 px-6">
+          <div className="w-20 h-20 mx-auto mb-4 rounded-3xl bg-[var(--color-primary-light)] flex items-center justify-center">
+            <span className="text-4xl">{cards.length === 0 ? "🃏" : "🔍"}</span>
+          </div>
+          <h3 className="text-lg font-bold text-[var(--color-text)] mb-2">
+            {cards.length === 0 ? "Tu album esta vacio" : "Sin resultados"}
+          </h3>
+          <p className="text-[15px] text-[var(--color-text-secondary)] mb-6 max-w-[280px] mx-auto leading-relaxed">
             {cards.length === 0
-              ? "Juega sesiones de ejercicios y abre sobres para coleccionar cartas"
-              : "Prueba con otro filtro"
+              ? "Juega ejercicios y abre sobres para conseguir tus primeras cartas"
+              : "Ninguna carta coincide con este filtro. Prueba otra combinacion"
             }
           </p>
           {cards.length === 0 && (
             <Link href="/learn">
-              <button className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-[var(--radius-md)] font-medium">
-                📚 Ir a jugar
+              <button className="px-6 py-3 bg-[var(--color-primary)] text-white rounded-2xl font-semibold shadow-sm hover:shadow-md transition-all min-h-[48px]">
+                Empezar a jugar
               </button>
             </Link>
           )}
-        </Card>
+        </div>
       )}
     </div>
   );

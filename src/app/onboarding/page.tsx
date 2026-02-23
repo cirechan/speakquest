@@ -170,7 +170,7 @@ export default function OnboardingPage() {
               style={{ width: `${progress}%` }}
             />
           </div>
-          <p className="text-xs text-[var(--color-text-muted)] mt-1 text-center">
+          <p className="text-[13px] text-[var(--color-text-muted)] mt-1.5 text-center font-medium">
             Paso {stepIndex} de {STEPS.length - 1}
           </p>
         </div>
@@ -185,29 +185,35 @@ export default function OnboardingPage() {
       >
         {/* === WELCOME === */}
         {currentStep === "welcome" && (
-          <div className="text-center space-y-6">
-            <div className="text-7xl animate-bounce-subtle">🎮</div>
-            <h1 className="text-3xl font-bold text-[var(--color-text)]">
-              Speak<span className="text-[var(--color-primary)]">Quest</span>
-            </h1>
-            <p className="text-lg text-[var(--color-text-secondary)]">
-              Aprende ingles como si fuera un videojuego
-            </p>
-            <div className="space-y-3 text-left max-w-xs mx-auto">
+          <div className="text-center space-y-8 py-4">
+            <div className="w-24 h-24 mx-auto rounded-3xl bg-[var(--color-primary-light)] flex items-center justify-center">
+              <span className="text-5xl">🎮</span>
+            </div>
+            <div className="space-y-2">
+              <h1 className="text-[var(--text-3xl)] font-extrabold text-[var(--color-text)] tracking-tight">
+                Speak<span className="text-[var(--color-primary)]">Quest</span>
+              </h1>
+              <p className="text-[var(--text-base)] text-[var(--color-text-secondary)]">
+                Aprende ingles como si fuera un videojuego
+              </p>
+            </div>
+            <div className="space-y-4 text-left max-w-xs mx-auto">
               {[
                 { emoji: "🎯", text: "Ejercicios divertidos" },
                 { emoji: "🃏", text: "Colecciona cartas de vocabulario" },
                 { emoji: "🔥", text: "Mantén tu racha diaria" },
                 { emoji: "🏆", text: "Sube de nivel y rango" },
               ].map(({ emoji, text }) => (
-                <div key={text} className="flex items-center gap-3">
-                  <span className="text-2xl">{emoji}</span>
-                  <span className="text-[var(--color-text)]">{text}</span>
+                <div key={text} className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-[var(--color-bg)] flex items-center justify-center shrink-0 border border-[var(--color-border)]/50">
+                    <span className="text-2xl">{emoji}</span>
+                  </div>
+                  <span className="text-[var(--text-base)] font-medium text-[var(--color-text)]">{text}</span>
                 </div>
               ))}
             </div>
             <Button size="lg" className="w-full text-xl py-5 font-bold" onClick={goNext}>
-              🚀 ¡Empezar!
+              ¡Empezar!
             </Button>
           </div>
         )}

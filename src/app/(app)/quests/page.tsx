@@ -23,11 +23,11 @@ export default function QuestsPage() {
     <div className="space-y-5 animate-slide-up">
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-2xl font-bold text-[var(--color-text)] mb-1">
-          ⚔️ Misiones
+        <h1 className="text-[var(--text-2xl)] font-extrabold text-[var(--color-text)] mb-1 tracking-tight">
+          Misiones
         </h1>
-        <p className="text-sm text-[var(--color-text-secondary)]">
-          ¡Completa misiones para ganar XP y premios!
+        <p className="text-[var(--text-sm)] text-[var(--color-text-secondary)]">
+          Completa misiones diarias para ganar XP y premios
         </p>
       </div>
 
@@ -70,20 +70,22 @@ export default function QuestsPage() {
           ))}
         </div>
       ) : (
-        <Card padding="lg" className="text-center">
-          <span className="text-5xl block mb-3">⚔️</span>
-          <p className="text-lg font-medium text-[var(--color-text)]">
-            ¡Juega para desbloquear misiones!
-          </p>
-          <p className="text-sm text-[var(--color-text-secondary)] mt-1 mb-4">
-            Las misiones se activan cuando empiezas a aprender
+        <div className="text-center py-10 px-6">
+          <div className="w-20 h-20 mx-auto mb-4 rounded-3xl bg-[var(--color-warning-light)] flex items-center justify-center">
+            <span className="text-4xl">⚔️</span>
+          </div>
+          <h3 className="text-lg font-bold text-[var(--color-text)] mb-2">
+            Misiones bloqueadas
+          </h3>
+          <p className="text-[15px] text-[var(--color-text-secondary)] mb-6 max-w-[280px] mx-auto leading-relaxed">
+            Completa tu primera sesion de ejercicios para desbloquear las misiones diarias
           </p>
           <Link href="/learn">
             <Button size="lg" className="gap-2">
-              🚀 Empezar a jugar
+              Empezar a jugar
             </Button>
           </Link>
-        </Card>
+        </div>
       )}
 
       {/* Info card */}
@@ -94,8 +96,8 @@ export default function QuestsPage() {
             <p className="font-medium text-sm text-[var(--color-text)]">
               Consejo
             </p>
-            <p className="text-xs text-[var(--color-text-secondary)]">
-              Las misiones se renuevan cada dia. ¡Completa sesiones de ejercicios para avanzar en tus misiones!
+            <p className="text-[13px] text-[var(--color-text-secondary)] leading-relaxed">
+              Las misiones se renuevan cada dia. Completa sesiones de ejercicios para avanzar en tus misiones
             </p>
           </div>
         </div>

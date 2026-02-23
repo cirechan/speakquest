@@ -14,7 +14,7 @@ interface ProgressBarProps {
 }
 
 const sizeStyles = {
-  sm: "h-1.5",
+  sm: "h-2",
   md: "h-3",
   lg: "h-5",
 };

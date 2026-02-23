@@ -9,7 +9,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const paddingStyles = {
-  sm: "p-3",
+  sm: "p-3.5",
   md: "p-4",
   lg: "p-6",
 };
@@ -24,10 +24,11 @@ export function Card({
   return (
     <div
       className={cn(
-        "bg-[var(--color-bg-card)] border border-[var(--color-border)]",
+        "bg-[var(--color-bg-card)]",
         "rounded-[var(--radius-lg)] shadow-[var(--shadow-sm)]",
-        "transition-shadow duration-[var(--transition-speed)]",
-        hover && "hover:shadow-[var(--shadow-md)]",
+        "border border-[var(--color-border)]/60",
+        "transition-all duration-[var(--transition-speed)]",
+        hover && "hover:shadow-[var(--shadow-md)] hover:-translate-y-[1px]",
         paddingStyles[padding],
         className
       )}

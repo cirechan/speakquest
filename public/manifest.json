@@ -4,8 +4,8 @@
   "description": "Aprende ingles como si fuera un videojuego. Ejercicios, coleccionables y misiones.",
   "start_url": "/dashboard",
   "display": "standalone",
-  "background_color": "#1a1a2e",
-  "theme_color": "#6c5ce7",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
   "orientation": "portrait",
   "categories": ["education", "games"],
   "icons": [

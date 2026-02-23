@@ -728,18 +728,21 @@ function PlayContent() {
         {/* Options */}
         <div className="grid grid-cols-1 gap-3">
           {mcExercise.options.map((option, i) => {
-            let style = "bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--color-primary-light)] hover:scale-[1.02]";
+            let style = "bg-[var(--color-bg-card)] border-2 border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-light)]/50 hover:shadow-sm";
             if (showResult) {
-              if (i === mcExercise.correctIndex) style = "bg-[var(--color-success-light)] border-2 border-[var(--color-success)] text-[var(--color-success)] scale-[1.03]";
+              if (i === mcExercise.correctIndex) style = "bg-[var(--color-success-light)] border-2 border-[var(--color-success)] text-[var(--color-success)] scale-[1.02] shadow-sm";
               else if (i === selectedOption && !isCorrect) style = "bg-[var(--color-error-light)] border-2 border-[var(--color-error)] text-[var(--color-error)] animate-wiggle";
-              else style = "bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text-muted)] opacity-40";
+              else style = "bg-[var(--color-bg)] border-2 border-[var(--color-border)]/50 text-[var(--color-text-muted)] opacity-40";
             }
             return (
               <button key={i} onClick={(e) => { e.stopPropagation(); handleSelect(i); }} disabled={showResult}
-                className={cn("w-full py-4 px-6 rounded-[var(--radius-lg)] text-lg font-medium transition-all duration-200 min-h-[52px]", style)}>
-                {showResult && i === mcExercise.correctIndex && "✅ "}
-                {showResult && i === selectedOption && !isCorrect && i !== mcExercise.correctIndex && "❌ "}
-                {option}
+                className={cn("w-full py-4 px-6 rounded-2xl text-lg font-medium transition-all duration-200 min-h-[56px] text-left", style)}>
+                <span className="flex items-center gap-3">
+                  <span className="w-8 h-8 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center text-sm font-bold text-[var(--color-text-muted)] shrink-0">
+                    {showResult && i === mcExercise.correctIndex ? "✓" : showResult && i === selectedOption && !isCorrect ? "✗" : String.fromCharCode(65 + i)}
+                  </span>
+                  <span>{option}</span>
+                </span>
               </button>
             );
           })}
