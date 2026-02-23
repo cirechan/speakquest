@@ -72,7 +72,7 @@ export default function ProfilePage() {
             <Card key={label} padding="md" className="text-center hover:scale-[1.03] transition-transform">
               <span className="text-3xl block mb-2">{emoji}</span>
               <p className="text-xl font-bold text-[var(--color-text)]">{value}</p>
-              <p className="text-xs text-[var(--color-text-muted)] mt-1">{label}</p>
+              <p className="text-[13px] text-[var(--color-text-muted)] mt-1 font-medium uppercase tracking-wide">{label}</p>
             </Card>
           ))}
         </div>

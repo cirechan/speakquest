@@ -134,7 +134,7 @@ function WordBuilderUI({ exercise, onComplete }: { exercise: WordBuilderExercise
             key={i}
             onClick={() => i < selected.length && removeLetter(i)}
             className={cn(
-              "w-11 h-11 rounded-[var(--radius-md)] text-lg font-bold flex items-center justify-center transition-all",
+              "w-12 h-12 rounded-[var(--radius-md)] text-lg font-bold flex items-center justify-center transition-all",
               i < selected.length
                 ? answered
                   ? builtWord[i]?.toUpperCase() === exercise.answer[i]?.toUpperCase()
@@ -156,7 +156,7 @@ function WordBuilderUI({ exercise, onComplete }: { exercise: WordBuilderExercise
             <button
               key={idx}
               onClick={() => addLetter(idx)}
-              className="w-11 h-11 rounded-[var(--radius-md)] bg-[var(--color-bg-card)] border border-[var(--color-border)] text-lg font-bold text-[var(--color-text)] hover:bg-[var(--color-primary-light)] hover:border-[var(--color-primary)] active:scale-95 transition-all"
+              className="w-12 h-12 rounded-[var(--radius-md)] bg-[var(--color-bg-card)] border border-[var(--color-border)] text-lg font-bold text-[var(--color-text)] hover:bg-[var(--color-primary-light)] hover:border-[var(--color-primary)] active:scale-95 transition-all"
             >
               {letter}
             </button>
@@ -328,7 +328,7 @@ function TranslatePhraseUI({ exercise, onComplete }: { exercise: TranslatePhrase
             key={`sel-${i}`}
             onClick={(e) => { e.stopPropagation(); removeWord(i); }}
             className={cn(
-              "px-3 py-2 rounded-[var(--radius-md)] text-sm font-medium transition-all",
+              "px-4 py-3 rounded-[var(--radius-md)] text-base font-medium transition-all min-h-[44px]",
               answered
                 ? i < exercise.answer.length && word === exercise.answer[i]
                   ? "bg-[var(--color-success-light)] border border-[var(--color-success)] text-[var(--color-success)]"
@@ -348,7 +348,7 @@ function TranslatePhraseUI({ exercise, onComplete }: { exercise: TranslatePhrase
             <button
               key={`avail-${i}`}
               onClick={(e) => { e.stopPropagation(); addWord(word, i); }}
-              className="px-4 py-2 rounded-[var(--radius-md)] bg-[var(--color-bg-card)] border border-[var(--color-border)] text-sm font-medium text-[var(--color-text)] hover:bg-[var(--color-primary-light)] hover:border-[var(--color-primary)] active:scale-95 transition-all"
+              className="px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-bg-card)] border border-[var(--color-border)] text-base font-medium text-[var(--color-text)] hover:bg-[var(--color-primary-light)] hover:border-[var(--color-primary)] active:scale-95 transition-all min-h-[44px]"
             >
               {word}
             </button>
@@ -776,13 +776,19 @@ function PlayContent() {
         <div className="flex-1">
           <ProgressBar value={currentIndex + 1} max={totalExercises} color={theme?.color || "var(--color-primary)"} size="md" />
         </div>
-        <div className="flex items-center gap-2 text-sm font-medium text-[var(--color-text-secondary)]">
-          <span>⏱️ {formatTime(timeLeft)}</span>
+        <div className={cn(
+          "flex items-center gap-1.5 text-base font-semibold whitespace-nowrap px-3 py-1.5 rounded-[var(--radius-full)] transition-colors",
+          timeLeft <= 60
+            ? "text-[var(--color-error)] bg-[var(--color-error-light)] animate-pulse-subtle"
+            : "text-[var(--color-text-secondary)]"
+        )}>
+          <span>⏱️</span>
+          <span>{formatTime(timeLeft)}</span>
         </div>
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="text-sm text-[var(--color-text-secondary)]">
+        <span className="text-[15px] text-[var(--color-text-secondary)] font-medium">
           {currentExercise.emoji} Ejercicio {currentIndex + 1} de {totalExercises}
         </span>
         {streak >= 2 && (
@@ -795,41 +801,41 @@ function PlayContent() {
       {/* Feedback overlay */}
       {showResult && (
         <Card padding="md" className={cn(
-          "text-center animate-slide-up",
-          isCorrect ? "bg-[var(--color-success-light)] border border-[var(--color-success)]" : "bg-[var(--color-error-light)] border border-[var(--color-error)]"
+          "text-center animate-slide-up border-2",
+          isCorrect ? "bg-[var(--color-success-light)] border-[var(--color-success)]" : "bg-[var(--color-error-light)] border-[var(--color-error)]"
         )}>
           <div className="flex items-center justify-center gap-3">
-            <span className="text-3xl">{isCorrect
+            <span className="text-4xl">{isCorrect
               ? (streak >= 5 ? "🔥" : streak >= 3 ? "⚡" : ["🎉", "🌟", "💪", "🚀", "✨"][currentIndex % 5])
               : ["😅", "🤔", "💡", "🧠"][currentIndex % 4]
             }</span>
             <div className="text-left">
-              <p className="font-bold text-[var(--color-text)]">{isCorrect
+              <p className="font-bold text-lg text-[var(--color-text)]">{isCorrect
                 ? (streak >= 5 ? "¡¡IMPARABLE!!" : streak >= 3 ? "¡Racha de fuego!" : ["¡Correcto!", "¡Genial!", "¡Eso es!", "¡Bien hecho!", "¡Crack!"][currentIndex % 5])
                 : ["¡Casi lo tienes!", "¡La próxima seguro!", "¡No te rindas!", "¡Tú puedes!"][currentIndex % 4]
               }</p>
               {isCorrect ? (
-                <p className="text-sm text-[var(--color-success)]">
+                <p className="text-[15px] text-[var(--color-success)] font-medium">
                   ✨ +{Math.max(5, 15 + (streak >= 3 ? 10 : 0) - (usedHintThisExercise ? HINT_XP_PENALTY : 0))} XP
                   {streak >= 3 && " 🔥 ¡Bonus racha!"}
                 </p>
               ) : (
-                <p className="text-sm text-[var(--color-text-secondary)]">
+                <p className="text-[15px] text-[var(--color-text-secondary)]">
                   La respuesta era: <strong>{currentExercise.english}</strong> ({currentExercise.spanish})
                 </p>
               )}
             </div>
           </div>
-          <p className="text-xs text-[var(--color-text-muted)] mt-2">Toca para continuar →</p>
+          <p className="text-[13px] text-[var(--color-text-muted)] mt-2 font-medium">Toca para continuar →</p>
         </Card>
       )}
 
       {/* XP counter */}
-      <div className="flex items-center justify-center gap-2 text-sm text-[var(--color-text-secondary)]">
-        <span>✨ XP: <strong className="text-[var(--color-primary)]">{xpEarned}</strong></span>
-        <span>•</span>
+      <div className="flex items-center justify-center gap-3 text-[15px] font-medium text-[var(--color-text-secondary)] bg-[var(--color-bg-card)] px-4 py-2.5 rounded-[var(--radius-full)] border border-[var(--color-border)]">
+        <span>✨ <strong className="text-[var(--color-primary)]">{xpEarned}</strong> XP</span>
+        <span className="text-[var(--color-border)]">|</span>
         <span>✅ {score}/{currentIndex + (showResult ? 1 : 0)}</span>
-        {hintsRemaining < MAX_HINTS_PER_SESSION && (<><span>•</span><span>💡 {hintsRemaining}</span></>)}
+        {hintsRemaining < MAX_HINTS_PER_SESSION && (<><span className="text-[var(--color-border)]">|</span><span>💡 {hintsRemaining}</span></>)}
       </div>
     </div>
   );

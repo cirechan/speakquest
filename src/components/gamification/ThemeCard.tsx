@@ -52,7 +52,7 @@ export function ThemeCard({
           color={color}
           size="sm"
         />
-        <p className="text-xs text-[var(--color-text-muted)] mt-1">
+        <p className="text-[13px] text-[var(--color-text-muted)] mt-1.5">
           {wordsLearned}/{totalWords} palabras · {percentage}%
         </p>
       </div>

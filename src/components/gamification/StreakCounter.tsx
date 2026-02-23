@@ -24,7 +24,7 @@ export function StreakCounter({ current, best, shields, className }: StreakCount
         </div>
         <div>
           <p className="text-2xl font-bold text-[var(--color-text)]">{current}</p>
-          <p className="text-xs text-[var(--color-text-secondary)]">
+          <p className="text-[13px] text-[var(--color-text-secondary)]">
             {current === 1 ? "día" : "días"} seguidos
           </p>
         </div>
@@ -32,7 +32,7 @@ export function StreakCounter({ current, best, shields, className }: StreakCount
 
       {/* Best streak */}
       <div className="text-center">
-        <p className="text-sm font-medium text-[var(--color-text-muted)]">🏅 Mejor</p>
+        <p className="text-[13px] font-medium text-[var(--color-text-muted)]">🏅 Mejor</p>
         <p className="text-lg font-bold text-[var(--color-text)]">{best}</p>
       </div>
 
@@ -49,7 +49,7 @@ export function StreakCounter({ current, best, shields, className }: StreakCount
             🛡️
           </span>
         ))}
-        <span className="text-xs text-[var(--color-text-secondary)] ml-1">
+        <span className="text-[13px] text-[var(--color-text-secondary)] ml-1">
           {shields}/3
         </span>
       </div>

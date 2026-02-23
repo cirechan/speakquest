@@ -40,20 +40,20 @@ export default function DashboardPage() {
   const questsDoneToday = dailyQuests.filter(q => q.completed).length;
 
   return (
-    <div className="space-y-5 animate-slide-up">
+    <div className="space-y-6 animate-slide-up">
       {/* Welcome + Big play button */}
-      <div className="text-center space-y-3">
+      <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3">
           {avatarUrl ? (
-            <img src={avatarUrl} alt="Avatar" className="w-10 h-10 rounded-full object-cover border-2 border-[var(--color-primary)]" />
+            <img src={avatarUrl} alt="Avatar" className="w-12 h-12 rounded-full object-cover border-2 border-[var(--color-primary)] shadow-sm" />
           ) : (
-            <span className="text-3xl">👋</span>
+            <span className="text-4xl">👋</span>
           )}
-          <h1 className="text-2xl font-bold text-[var(--color-text)]">
+          <h1 className="text-[var(--text-2xl)] font-extrabold text-[var(--color-text)]">
             ¡Hola, {playerName || "Aventurero"}!
           </h1>
         </div>
-        <p className="text-sm text-[var(--color-text-secondary)]">
+        <p className="text-[var(--text-sm)] text-[var(--color-text-secondary)]">
           {sessionsCompleted === 0
             ? "¿Listo para tu primera aventura en ingles?"
             : `${sessionsCompleted} sesiones · ${wordsLearned.length} palabras`
@@ -67,9 +67,12 @@ export default function DashboardPage() {
         </Link>
       </div>
 
+      {/* Divider */}
+      <div className="h-px bg-[var(--color-border)]" />
+
       {/* Stats row */}
       <div className="grid grid-cols-2 gap-3">
-        <Card padding="sm">
+        <Card padding="md">
           <StreakCounter
             current={currentStreak}
             best={bestStreak}
@@ -77,23 +80,23 @@ export default function DashboardPage() {
           />
         </Card>
 
-        <Card padding="sm">
-          <div className="flex items-center gap-2 mb-2">
+        <Card padding="md">
+          <div className="flex items-center gap-2 mb-3">
             <span className="text-lg">🎯</span>
-            <span className="font-medium text-sm text-[var(--color-text)]">Progreso</span>
+            <span className="font-semibold text-[var(--text-sm)] text-[var(--color-text)]">Progreso</span>
           </div>
           <div className="grid grid-cols-3 gap-1 text-center">
             <div>
               <p className="text-lg font-bold text-[var(--color-primary)]">{xpTotal}</p>
-              <p className="text-[10px] text-[var(--color-text-muted)]">XP</p>
+              <p className="text-[13px] text-[var(--color-text-muted)]">XP</p>
             </div>
             <div>
               <p className="text-lg font-bold text-[var(--color-text)]">{wordsLearned.length}</p>
-              <p className="text-[10px] text-[var(--color-text-muted)]">Palabras</p>
+              <p className="text-[13px] text-[var(--color-text-muted)]">Palabras</p>
             </div>
             <div>
               <p className="text-lg font-bold text-[var(--color-text)]">{sessionsCompleted}</p>
-              <p className="text-[10px] text-[var(--color-text-muted)]">Sesiones</p>
+              <p className="text-[13px] text-[var(--color-text-muted)]">Sesiones</p>
             </div>
           </div>
         </Card>
@@ -122,21 +125,21 @@ export default function DashboardPage() {
       {/* Daily quests */}
       {dailyQuests.length > 0 && (
         <section>
-          <div className="flex items-center justify-between mb-2">
-            <h2 className="text-base font-bold text-[var(--color-text)]">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-[var(--text-lg)] font-bold text-[var(--color-text)]">
               ⚔️ Misiones ({questsDoneToday}/{dailyQuests.length})
             </h2>
           </div>
-          <div className="grid gap-2">
+          <div className="grid gap-2.5">
             {dailyQuests.map((quest) => (
-              <Card key={quest.id} padding="sm" className={cn(
+              <Card key={quest.id} padding="md" className={cn(
                 "flex items-center gap-3",
                 quest.completed && "opacity-60"
               )}>
-                <span className="text-xl">{quest.emoji}</span>
+                <span className="text-2xl">{quest.emoji}</span>
                 <div className="flex-1 min-w-0">
                   <p className={cn(
-                    "font-medium text-sm text-[var(--color-text)]",
+                    "font-medium text-[var(--text-sm)] text-[var(--color-text)]",
                     quest.completed && "line-through"
                   )}>
                     {quest.description}
@@ -145,7 +148,7 @@ export default function DashboardPage() {
                     <ProgressBar value={quest.current} max={quest.target} color="var(--color-primary)" size="sm" />
                   )}
                 </div>
-                <span className="text-xs font-bold text-[var(--color-primary)] whitespace-nowrap">
+                <span className="text-[13px] font-bold text-[var(--color-primary)] whitespace-nowrap">
                   {quest.completed ? "✅" : `+${quest.xpReward}`}
                 </span>
               </Card>
@@ -154,9 +157,12 @@ export default function DashboardPage() {
         </section>
       )}
 
+      {/* Divider */}
+      <div className="h-px bg-[var(--color-border)]" />
+
       {/* Themes */}
       <section>
-        <h2 className="text-base font-bold text-[var(--color-text)] mb-2">
+        <h2 className="text-[var(--text-lg)] font-bold text-[var(--color-text)] mb-3">
           📚 Temas
         </h2>
         <div className="grid grid-cols-2 gap-3">

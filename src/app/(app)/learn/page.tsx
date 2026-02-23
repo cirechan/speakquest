@@ -106,7 +106,7 @@ function LearnContent() {
                 }`}
               >
                 <span className="text-xl font-bold">{min}</span>
-                <span className="text-[10px]">min</span>
+                <span className="text-[12px] font-medium">min</span>
               </button>
             ))}
           </div>

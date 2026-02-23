@@ -27,7 +27,7 @@ export function AppShell({ children }: AppShellProps) {
       </div>
 
       {/* Main content */}
-      <main className="px-4 py-4 pb-24 max-w-lg mx-auto">
+      <main className="px-4 py-5 pb-28 max-w-lg mx-auto">
         {children}
       </main>
 

@@ -28,14 +28,14 @@ export function XPBar({ xpTotal, rank, streakCurrent, className }: XPBarProps) {
   return (
     <div
       className={cn(
-        "flex items-center gap-4 px-4 py-2 bg-[var(--color-bg-card)]",
-        "border-b border-[var(--color-border)]",
+        "flex items-center gap-4 px-4 py-3 bg-[var(--color-bg-card)]",
+        "border-b-2 border-[var(--color-border)] shadow-[0_1px_3px_rgb(0_0_0/0.04)]",
         className
       )}
     >
       {/* Rank badge */}
       <div
-        className="flex items-center gap-1.5 px-2.5 py-1 rounded-[var(--radius-full)] text-xs font-bold animate-pulse-subtle"
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-[var(--radius-full)] text-[13px] font-bold"
         style={{ backgroundColor: `${currentRank.color}20`, color: currentRank.color }}
       >
         <span>{currentRank.emoji}</span>
@@ -53,7 +53,7 @@ export function XPBar({ xpTotal, rank, streakCurrent, className }: XPBarProps) {
             }}
           />
         </div>
-        <span className="text-xs font-medium text-[var(--color-text-secondary)] whitespace-nowrap">
+        <span className="text-[13px] font-semibold text-[var(--color-text-secondary)] whitespace-nowrap">
           ✨ {xpTotal.toLocaleString()} XP
         </span>
       </div>
