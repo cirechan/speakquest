@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="80" fill="#6c5ce7"/>
+  <text x="256" y="200" text-anchor="middle" font-size="100" font-family="Arial, sans-serif" font-weight="bold" fill="white">Speak</text>
+  <text x="256" y="310" text-anchor="middle" font-size="100" font-family="Arial, sans-serif" font-weight="bold" fill="#ffd93d">Quest</text>
+  <text x="256" y="420" text-anchor="middle" font-size="120">🎮</text>
+</svg>

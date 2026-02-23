@@ -32,6 +32,14 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
+
+# GSD hooks and runtime (not project-specific docs)
+.claude/hooks/
+.claude/get-shit-done/
+.claude/agents/
+.claude/gsd-file-manifest.json
+.claude/package.json
 
 # vercel
 .vercel
